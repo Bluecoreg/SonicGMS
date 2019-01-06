@@ -109,6 +109,13 @@ if (game_is_running()) {
         }
         break;
 
+    case "hang":
+        if (timeline_index != TailsTailsHangAnim) {
+            timeline_index = TailsTailsHangAnim;
+            timeline_position = 0;
+        }
+        break;
+
     default:
         visible = false;
     }

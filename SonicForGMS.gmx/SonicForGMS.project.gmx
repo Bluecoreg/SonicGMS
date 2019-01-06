@@ -53,9 +53,10 @@
       <sounds name="Player Character">
         <sounds name="Common">
           <sound>sound\BrakeSound</sound>
+          <sound>sound\BreatheSound</sound>
+          <sound>sound\ClaspingSound</sound>
           <sound>sound\DrownSound</sound>
           <sound>sound\DrownWarningSound</sound>
-          <sound>sound\BreatheSound</sound>
           <sound>sound\HurtSound</sound>
           <sound>sound\JumpSound</sound>
           <sound>sound\RingLeftSound</sound>
@@ -69,7 +70,6 @@
         </sounds>
         <sounds name="Specific">
           <sounds name="Knuckles">
-            <sound>sound\ClaspingSound</sound>
             <sound>sound\LandingSound</sound>
           </sounds>
           <sounds name="Shields">
@@ -179,6 +179,7 @@
             <sprite>sprites\KnucklesGlideRiseSprite</sprite>
             <sprite>sprites\KnucklesGlideSlideSprite</sprite>
             <sprite>sprites\KnucklesGlideSprite</sprite>
+            <sprite>sprites\KnucklesHangSprite</sprite>
             <sprite>sprites\KnucklesLiftSprite</sprite>
             <sprite>sprites\KnucklesLookSprite</sprite>
             <sprite>sprites\KnucklesPushSprite</sprite>
@@ -200,6 +201,7 @@
               <sprite>sprites\SonicDeathSprite</sprite>
               <sprite>sprites\SonicDrownSprite</sprite>
               <sprite>sprites\SonicFlipSprite</sprite>
+              <sprite>sprites\SonicHangSprite</sprite>
               <sprite>sprites\SonicLookSprite</sprite>
               <sprite>sprites\SonicPushSprite</sprite>
               <sprite>sprites\SonicReverseFlipSprite</sprite>
@@ -229,6 +231,9 @@
             <sprites name="General">
               <sprite>sprites\TailsBrakeSprite</sprite>
               <sprite>sprites\TailsBreatheSprite</sprite>
+              <sprite>sprites\TailsCarryFallSprite</sprite>
+              <sprite>sprites\TailsCarryRisingSprite</sprite>
+              <sprite>sprites\TailsCarrySprite</sprite>
               <sprite>sprites\TailsContinueSprite</sprite>
               <sprite>sprites\TailsCrouchSprite</sprite>
               <sprite>sprites\TailsDeathSprite</sprite>
@@ -236,6 +241,7 @@
               <sprite>sprites\TailsFlightSprite</sprite>
               <sprite>sprites\TailsFlipReverseSprite</sprite>
               <sprite>sprites\TailsFlipSprite</sprite>
+              <sprite>sprites\TailsHangSprite</sprite>
               <sprite>sprites\TailsLookSprite</sprite>
               <sprite>sprites\TailsPushSprite</sprite>
               <sprite>sprites\TailsRisingSprite</sprite>
@@ -246,6 +252,7 @@
               <sprite>sprites\TailsStanceLoopSprite</sprite>
               <sprite>sprites\TailsStanceSprite</sprite>
               <sprite>sprites\TailsStunnedSprite</sprite>
+              <sprite>sprites\TailsSwimCarryFallSprite</sprite>
               <sprite>sprites\TailsSwimFallSprite</sprite>
               <sprite>sprites\TailsSwimSprite</sprite>
               <sprite>sprites\TailsTeeterSprite</sprite>
@@ -253,6 +260,7 @@
               <sprite>sprites\TailsWalkSprite</sprite>
             </sprites>
             <sprites name="Tails">
+              <sprite>sprites\TailsTailsHangSprite</sprite>
               <sprite>sprites\TailsTailsSpinDashSprite</sprite>
               <sprite>sprites\TailsTailsSpinSprite</sprite>
               <sprite>sprites\TailsTailsStanceSprite</sprite>
@@ -575,6 +583,7 @@
                 </scripts>
               </scripts>
               <scripts name="Tails">
+                <script>scripts\player_is_carrying.gml</script>
                 <script>scripts\player_is_flying.gml</script>
                 <script>scripts\player_is_swimming.gml</script>
               </scripts>
@@ -677,9 +686,11 @@
                     <script>scripts\player_react_to_crumbling_floor.gml</script>
                     <script>scripts\player_react_to_death_zone.gml</script>
                     <script>scripts\player_react_to_enemy.gml</script>
+                    <script>scripts\player_react_to_flight_link.gml</script>
                     <script>scripts\player_react_to_hazard.gml</script>
                     <script>scripts\player_react_to_lamp_post.gml</script>
                     <script>scripts\player_react_to_layer_flip.gml</script>
+                    <script>scripts\player_react_to_link.gml</script>
                     <script>scripts\player_react_to_monitor.gml</script>
                     <script>scripts\player_react_to_push_block.gml</script>
                     <script>scripts\player_react_to_ring.gml</script>
@@ -688,8 +699,6 @@
                     <script>scripts\player_react_to_spike_trap.gml</script>
                     <script>scripts\player_react_to_spring.gml</script>
                     <script>scripts\player_react_to_spring_diagonal.gml</script>
-                    <script>scripts\player_react_to_sticky_floor.gml</script>
-                    <script>scripts\player_react_to_swing.gml</script>
                     <script>scripts\player_react_to_switch.gml</script>
                     <script>scripts\player_react_to_water.gml</script>
                     <script>scripts\player_react_to_world_ring.gml</script>
@@ -725,6 +734,7 @@
             </scripts>
             <scripts name="Update">
               <script>scripts\game_pc_align.gml</script>
+              <script>scripts\game_pc_eject.gml</script>
               <script>scripts\game_pc_land.gml</script>
               <script>scripts\game_pc_lift.gml</script>
               <script>scripts\game_pc_position.gml</script>
@@ -873,6 +883,7 @@
             <objects name="Other">
               <object>objects\PlayerDashSmoke</object>
               <object>objects\SuperFormShader</object>
+              <object>objects\TailsFlightLink</object>
               <object>objects\TailsTails</object>
             </objects>
             <objects name="Parent">
@@ -1248,6 +1259,7 @@
                 <timeline>timelines\KnucklesGlideLandAnim</timeline>
                 <timeline>timelines\KnucklesGlideRiseAnim</timeline>
                 <timeline>timelines\KnucklesGlideSlideAnim</timeline>
+                <timeline>timelines\KnucklesHangAnim</timeline>
                 <timeline>timelines\KnucklesLiftAnim</timeline>
                 <timeline>timelines\KnucklesLookAnim</timeline>
                 <timeline>timelines\KnucklesPushAnim</timeline>
@@ -1271,6 +1283,7 @@
               </timelines>
               <timelines name="General">
                 <timeline>timelines\SonicBrakeAnim</timeline>
+                <timeline>timelines\SonicHangAnim</timeline>
                 <timeline>timelines\SonicBreatheAnim</timeline>
                 <timeline>timelines\SonicCrouchAnim</timeline>
                 <timeline>timelines\SonicDeathAnim</timeline>
@@ -1308,12 +1321,16 @@
               <timelines name="General">
                 <timeline>timelines\TailsBrakeAnim</timeline>
                 <timeline>timelines\TailsBreatheAnim</timeline>
+                <timeline>timelines\TailsCarryAnim</timeline>
+                <timeline>timelines\TailsCarryFallAnim</timeline>
+                <timeline>timelines\TailsCarryRisingAnim</timeline>
                 <timeline>timelines\TailsCrouchAnim</timeline>
                 <timeline>timelines\TailsDeathAnim</timeline>
                 <timeline>timelines\TailsDrownAnim</timeline>
                 <timeline>timelines\TailsFlightAnim</timeline>
                 <timeline>timelines\TailsFlightFallAnim</timeline>
                 <timeline>timelines\TailsFlipAnim</timeline>
+                <timeline>timelines\TailsHangAnim</timeline>
                 <timeline>timelines\TailsLookAnim</timeline>
                 <timeline>timelines\TailsPushAnim</timeline>
                 <timeline>timelines\TailsRisingAnim</timeline>
@@ -1326,11 +1343,13 @@
                 <timeline>timelines\TailsStunnedAnim</timeline>
                 <timeline>timelines\TailsSwimAnim</timeline>
                 <timeline>timelines\TailsSwimFallAnim</timeline>
+                <timeline>timelines\TailsSwimCarryFallAnim</timeline>
                 <timeline>timelines\TailsTeeterAnim</timeline>
                 <timeline>timelines\TailsTransformAnim</timeline>
                 <timeline>timelines\TailsWalkAnim</timeline>
               </timelines>
               <timelines name="Tails">
+                <timeline>timelines\TailsTailsHangAnim</timeline>
                 <timeline>timelines\TailsTailsSpinAnim</timeline>
                 <timeline>timelines\TailsTailsSpinDashAnim</timeline>
                 <timeline>timelines\TailsTailsStanceAnim</timeline>
