@@ -82,6 +82,7 @@ recovery_time = 0;
 superspeed_time = 0;
 invincibility_time = 0;
 superform_time = 0;
+pealoutcharge_time = 0;
 
 default_slide_lock_time = 32;
 default_spring_lock_time = 16;

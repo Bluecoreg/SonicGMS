@@ -18,6 +18,11 @@ case "finish":
     break;
 
 case "step":
+    if (input_action_pressed and object_index == Sonic) {
+        x_speed = 0;
+        return game_pc_perform(self, player_is_peelouting);
+    }
+    
     if (input_action_pressed and game_pc_upper_collision_solid(self, y_radius + 5) == noone) {
         game_pc_play_sound(self, JumpSound);
         return game_pc_perform(self, player_is_jumping);

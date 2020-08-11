@@ -135,6 +135,8 @@
             <sound>sound\DropDashSound</sound>
             <sound>sound\FlameDashSound</sound>
             <sound>sound\ThunderJumpSound</sound>
+            <sound>sound\PealOutSound</sound>
+            <sound>sound\PealOutChargeSound</sound>
           </sounds>
           <sounds name="Tails">
             <sound>sound\FlightFallSound</sound>
@@ -275,6 +277,8 @@
               <sprite>sprites\SonicTeeterFrontSprite</sprite>
               <sprite>sprites\SonicTransformSprite</sprite>
               <sprite>sprites\SonicWalkSprite</sprite>
+              <sprite>sprites\SonicPealOutSprite</sprite>
+              <sprite>sprites\SonicPealOutChargeSprite</sprite>
             </sprites>
             <sprites name="Super">
               <sprite>sprites\SuperSonicCrouchSprite</sprite>
@@ -284,6 +288,7 @@
               <sprite>sprites\SuperSonicTeeterSprite</sprite>
               <sprite>sprites\SuperSonicWalkHighSprite</sprite>
               <sprite>sprites\SuperSonicWalkLowSprite</sprite>
+              <sprite>sprites\SuperSonicPealOutChargeSprite</sprite>
             </sprites>
           </sprites>
           <sprites name="Tails">
@@ -636,6 +641,7 @@
                   <script>scripts\player_is_aqua_bouncing.gml</script>
                   <script>scripts\player_is_drop_dashing.gml</script>
                   <script>scripts\player_is_super_sonic_flying.gml</script>
+                  <script>scripts\player_is_peelouting.gml</script>
                 </scripts>
                 <scripts name="Movement">
                   <script>scripts\player_perform_flame_dash.gml</script>
@@ -1367,6 +1373,8 @@
                 <timeline>timelines\SonicTeeterFrontAnim</timeline>
                 <timeline>timelines\SonicTransformAnim</timeline>
                 <timeline>timelines\SonicWalkAnim</timeline>
+                <timeline>timelines\SonicPealOutAnim</timeline>
+                <timeline>timelines\SonicPealOutChargeAnim</timeline>
               </timelines>
               <timelines name="Super">
                 <timeline>timelines\SuperSonicCrouchAnim</timeline>
@@ -1375,6 +1383,7 @@
                 <timeline>timelines\SuperSonicStanceAnim</timeline>
                 <timeline>timelines\SuperSonicTeeterAnim</timeline>
                 <timeline>timelines\SuperSonicWalkAnim</timeline>
+                <timeline>timelines\SuperSonicPealOutChargeAnim</timeline>
               </timelines>
             </timelines>
             <timelines name="Tails">

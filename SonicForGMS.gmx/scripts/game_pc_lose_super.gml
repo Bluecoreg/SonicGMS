@@ -26,10 +26,12 @@ with (character) {
             game_pc_define_animation(self, "stand", SonicStanceAnim);
             game_pc_define_animation(self, "walk", SonicWalkAnim);
             game_pc_define_animation(self, "run", SonicRunAnim);
+            game_pc_define_animation(self, "sprint", SonicPealOutAnim);
             game_pc_define_animation(self, "push", SonicPushAnim);
             game_pc_define_animation(self, "crouch", SonicCrouchAnim);
             game_pc_define_animation(self, "teeter_front", SonicTeeterFrontAnim);
             game_pc_define_animation(self, "teeter_back", SonicTeeterBackAnim);
+            game_pc_define_animation(self, "pealoutcharge", SonicPealOutChargeAnim);
             if (state == player_is_super_sonic_flying) {
                 game_pc_perform(self, player_is_falling);
                 game_pc_animate(self, "walk", true);
